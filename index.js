@@ -70,6 +70,8 @@ if (process.env.PCM) {
   var pcmDeviceSearchLoop = setInterval(pcmDeviceSearch, 10000);
 }
 
+// Only if PCM devices are enabled through env variable
+if (process.env.BABELBLUE) {
 // Watch for new Bluetooth devices
 blue.Bluetooth();
 setTimeout(() => blue.getPairedDevices(), 5000)
@@ -87,6 +89,7 @@ blue.on(blue.bluetoothEvents.Device, function (devices) {
   }
   updateAllInputs();
 })
+}
 
 function updateAllInputs(){
   var defaultInputs = [
